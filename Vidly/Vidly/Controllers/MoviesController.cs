@@ -10,9 +10,16 @@ namespace Vidly.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies
-        public ActionResult Index()
+        //int? to make it nullable
+        public ActionResult Index(int? pageIndex, string sortBy)
         {
-            return View();
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+
+            if (String.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Name";
+
+            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
 
         public ActionResult Random()
@@ -20,10 +27,13 @@ namespace Vidly.Controllers
             var movie = new Movie() { Name = "Shrek!" };
 
             return View(movie);
-            //return Content("Hello World!");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            //return RedirectToAction("Index", "Home", new { page=1, sortBy= "Name" } );
+        }
+
+        //The parameter (int id) will map against the RouteConfig 
+        //url: "{controller}/{action}/{id}" ==> therefore we can't change this one in this scenario
+        public ActionResult Edit(int id)
+        {
+            return Content("id " + id);
         }
     }
 }
