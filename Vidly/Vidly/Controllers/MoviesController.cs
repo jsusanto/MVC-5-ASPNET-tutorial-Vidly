@@ -35,5 +35,10 @@ namespace Vidly.Controllers
         {
             return Content("id " + id);
         }
+
+        public ActionResult ByReleasedDate(int year, int month)
+        {
+            return Content(year + " / " + month);
+        }
     }
 }
