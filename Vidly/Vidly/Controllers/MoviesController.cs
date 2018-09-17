@@ -26,7 +26,9 @@ namespace Vidly.Controllers
         {
             var movie = new Movie() { Name = "Shrek!" };
 
-            return View(movie);
+            ViewData["Movie"] = movie;
+
+            return View();
         }
 
         //The parameter (int id) will map against the RouteConfig 
