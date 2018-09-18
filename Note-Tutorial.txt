@@ -1,0 +1,61 @@
+If your Visual Studio 2015 is not having any visual-studio-2015-not-syntax-highlighting-razor-nor-intellisense
+
+Solution:
+the only fix so far is by resetting all user data (C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe /ResetUserData)
+
+Entity Framework
+================
+Objects --> Object/Relationship Mapper --> Relationship Data
+
+1. DbContext (class which is a gateway to our database)
+2. DbSet (DbContext has one or more DbSet which represents the table)
+
+LinQ               --> DbSet         --> Database
+(add/modify/delete)         automatically 
+                            generate SQL
+
+Entity Framework has two approaches:
+1. Database-first 
+2. Code-first **the recommended one
+   - Increased productivity
+   - Full versioning of database (easier to migrate the DB)
+   - Much easier to build an integration test db
+   
+NuGet PackageManager
+====================
+
+Package Manager Console Host Version 3.4.4.1321
+
+Type 'get-help NuGet' to see all available NuGet commands.
+/*
+  to Enable the migration
+  Now you will see the new folder "Migrations" on your ASP.NET project.
+*/
+PM> enable-migrations
+Checking if the context targets an existing database...
+Code First Migrations enabled for project Vidly.
+
+PM> add-migration InitialModel
+Scaffolding migration 'InitialModel'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration InitialModel' again.
+
+/*
+  Now you will see a new class under Migrations which is part of IdentityModel
+*/
+
+Now add the following code in the IdentityModel and run the force add-migration InitialModel
+
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    {
+        public DbSet<Customer> Customers { get; set; }
+
+PM> add-migration InitialModel -force
+Re-scaffolding migration 'InitialModel
+
+Now we create the database using the following command "update-database"
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809180242437_InitialModel].
+Applying explicit migration: 201809180242437_InitialModel.
+Running Seed method.
