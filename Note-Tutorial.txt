@@ -137,3 +137,27 @@ Specify the '-Verbose' flag to view the SQL statements being applied to the targ
 Applying explicit migrations: [201809200135037_AddBirthDateColumnToCustomerTable].
 Applying explicit migration: 201809200135037_AddBirthDateColumnToCustomerTable.
 Running Seed method.
+
+===================================================================================================
+
+***Add Movie table and Genre table when you modify the model class on those classes***
+
+PM> add-migration AddMovie
+Scaffolding migration 'AddMovie'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddMovie' again.
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809200232012_AddMovie].
+Applying explicit migration: 201809200232012_AddMovie.
+Running Seed method.
+
+PM> add-migration PopulateGenreTable
+Scaffolding migration 'PopulateGenreTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration PopulateGenreTable' again.
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809200233598_PopulateGenreTable].
+Applying explicit migration: 201809200233598_PopulateGenreTable.
+Running Seed method.

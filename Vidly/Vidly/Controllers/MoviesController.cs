@@ -5,11 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Movies
         //int? to make it nullable
         //This Index method was used for demonstration purposes
@@ -59,7 +72,11 @@ namespace Vidly.Controllers
 
         public ViewResult index()
         {
-            var movies = getMovies();
+            //Manual display from manual populate data
+            //var movies = getMovies();
+
+            //Display data from database
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movies);
         }
@@ -75,8 +92,12 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int Id)
         {
-            var movie = getMovies().SingleOrDefault(m => m.Id == Id);
+            //Show details from manual input - no database
+            //var movie = getMovies().SingleOrDefault(m => m.Id == Id);
 
+            //Show details from database
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == Id);
+  
             if (movie == null)
                 return HttpNotFound();
 
