@@ -16,6 +16,7 @@ else
         <thead>
             <tr>
                 <th>Customers</th>
+                <th>Membership Type</th>
                 <th>Discount Rate</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@ else
                     <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
                     <!-- Need to use eager loading in the controller or else it will throw error because 
                         by default EntityFramework will load customer object and not related object -->
+                    <td>@customer.MembershipType.Name</td>
                     <td>@customer.MembershipType.DiscountRate%</td>
                 </tr>
             }
