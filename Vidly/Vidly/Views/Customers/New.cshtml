@@ -1,0 +1,29 @@
+﻿@model Vidly.Models.Customer
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("Create", "Customers"))
+{
+    <!-- without using @@using the ASP.NET doesn't dispose the HTML tag  -->
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        <!-- ASP.NET will add the validation by default from the Customer Model 
+             class="form-control", it's a bootstrap class for better user interface
+            -->
+        @Html.TextBoxFor(m => m.Name, new { @class="form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BirthDate)
+        @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+    </div>
+    <!-- You need to check how to style the form from https://getbootstrap.com/docs/3.3/css/#forms -->
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsSubscribedToNewsletter) Subscribe to newsletter?
+        </label>
+    </div>
+}
