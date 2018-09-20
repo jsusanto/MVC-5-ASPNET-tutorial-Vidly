@@ -117,8 +117,23 @@ Running Seed method.
 PM> add-migration AddMembershiptypeName
 Scaffolding migration 'AddMembershiptypeName'.
 The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddMembershiptypeName' again.
+
 PM> update-database
 Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
 Applying explicit migrations: [201809200115232_AddMembershiptypeName].
 Applying explicit migration: 201809200115232_AddMembershiptypeName.
+Running Seed method.
+
+===================================================================================================
+
+***Add BirthDate to Customers table***
+
+PM> add-migration AddBirthDateColumnToCustomerTable -force
+Scaffolding migration 'AddBirthDateColumnToCustomerTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddBirthDateColumnToCustomerTable' again.
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809200135037_AddBirthDateColumnToCustomerTable].
+Applying explicit migration: 201809200135037_AddBirthDateColumnToCustomerTable.
 Running Seed method.

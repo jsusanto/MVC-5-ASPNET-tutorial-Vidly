@@ -19,5 +19,6 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
         //EntityFramework recognizes the foreign key
         public byte MembershipTypeId { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 }
