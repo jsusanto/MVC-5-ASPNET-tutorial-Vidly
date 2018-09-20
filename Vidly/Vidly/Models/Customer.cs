@@ -12,6 +12,7 @@ namespace Vidly.Models
         //Data annotation to override the default data type
         [Required]
         [StringLength(255)]
+        [Display (Name ="Customer Name")]
         public string Name { get; set; }
         public bool IsSubscribedToNewsletter { get; set; }
 
