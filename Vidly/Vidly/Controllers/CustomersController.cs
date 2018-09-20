@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,8 +29,9 @@ namespace Vidly.Controllers
             //The query gets executed when we iterate the customers object
             //var customers = _context.Customers;
 
-            //Alternately we can immediately query the query by calling toList()
-            var customers = _context.Customers.ToList();
+            //Eager loading is to load object and related object to avoid the error when calling the related object 
+            //Include - we need to declare new namespace System.Data.Entity
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
         }
