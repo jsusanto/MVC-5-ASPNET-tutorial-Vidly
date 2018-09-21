@@ -6,7 +6,7 @@ using Vidly.Models;
 
 namespace Vidly.ViewModels
 {
-    public class NewCustomerViewModel
+    public class CustomerFormViewModel
     {
         /*
             We're using IEnumerable instead of List because in this class we don't need the methods provided by List
