@@ -38,6 +38,19 @@ namespace Vidly.Controllers
         public ActionResult Save(Customer customer)
         {
             /*
+             ModelState property to get access to validation data
+             */
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
+
+            /*
              if we use public ActionResult Create(NewCustomerViewModel viewModel)
              The objects returned would be Customer **have value** and MembershipType **null**
 

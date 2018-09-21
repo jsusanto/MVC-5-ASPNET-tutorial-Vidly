@@ -161,3 +161,17 @@ Specify the '-Verbose' flag to view the SQL statements being applied to the targ
 Applying explicit migrations: [201809200233598_PopulateGenreTable].
 Applying explicit migration: 201809200233598_PopulateGenreTable.
 Running Seed method.
+
+===================================================================================================
+There are 3 steps of validations
+1. Add Data Annotation on your entity
+    //Data annotation to override the default data type
+    [Required]
+    [StringLength(255)]
+    [Display (Name ="Customer Name")]
+    public string Name { get; set; }
+
+2. To use ModelState.IsValid
+   if (!ModelState.IsValid)
+
+3. Add validation messages to our form (placeholder)

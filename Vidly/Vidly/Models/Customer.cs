@@ -23,6 +23,7 @@ namespace Vidly.Models
 
         //EntityFramework recognizes the foreign key
         [Display(Name = "Membership Type")]
+        //MembershipTypeId is implicitly as a required field because we don't declare as byte?
         public byte MembershipTypeId { get; set; }
 
         public DateTime? BirthDate { get; set; }
