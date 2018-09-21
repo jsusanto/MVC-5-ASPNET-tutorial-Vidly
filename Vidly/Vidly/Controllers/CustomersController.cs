@@ -45,7 +45,12 @@ namespace Vidly.Controllers
              ASP.NET is clever enough to assign directly to customer
              it's called model binding
              */
-            return View();
+
+            _context.Customers.Add(customer); //this syntax will save data in the memory
+
+            _context.SaveChanges(); //it will execute / persist to database
+
+            return RedirectToAction("Index", "Customers");
         }
 
         // GET: Customers
