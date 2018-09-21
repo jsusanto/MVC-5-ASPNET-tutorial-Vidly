@@ -28,6 +28,11 @@ namespace Vidly.Controllers
 
             var viewModel = new CustomerFormViewModel
             {
+                /*
+                 If we don't pass a new Customer object in New method, the validation summary will show validation error on Id
+                 The Id field is required.
+                 */
+                Customer = new Customer(), 
                 MembershipTypes = membershipTypes
             };
 
