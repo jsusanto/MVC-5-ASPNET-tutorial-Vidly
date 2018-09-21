@@ -9,17 +9,22 @@ namespace Vidly.Models
     public class Customer
     {
         public int Id { get; set; }
+
         //Data annotation to override the default data type
         [Required]
         [StringLength(255)]
         [Display (Name ="Customer Name")]
         public string Name { get; set; }
+
         public bool IsSubscribedToNewsletter { get; set; }
 
         //It's called Navigation Property because it allows us to navigate from one type to another
         public MembershipType MembershipType { get; set; }
+
         //EntityFramework recognizes the foreign key
+        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
+
         public DateTime? BirthDate { get; set; }
     }
 }

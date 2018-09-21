@@ -1,4 +1,4 @@
-﻿@model Vidly.Models.Customer
+﻿@model Vidly.ViewModels.NewCustomerViewModel
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,20 +10,25 @@
 {
     <!-- without using @@using the ASP.NET doesn't dispose the HTML tag  -->
     <div class="form-group">
-        @Html.LabelFor(m => m.Name)
+        @Html.LabelFor(m => m.Customer.Name)
         <!-- ASP.NET will add the validation by default from the Customer Model 
              class="form-control", it's a bootstrap class for better user interface
             -->
-        @Html.TextBoxFor(m => m.Name, new { @class="form-control" })
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class="form-control" })
     </div>
     <div class="form-group">
-        <label for="BirthDate">Date of Birth</label>
-        @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+        <label for="Customer_BirthDate">Date of Birth</label>
+        @Html.TextBoxFor(m => m.Customer.BirthDate, new { @class = "form-control" })
     </div>
     <!-- You need to check how to style the form from https://getbootstrap.com/docs/3.3/css/#forms -->
     <div class="checkbox">
         <label>
-            @Html.CheckBoxFor(m => m.IsSubscribedToNewsletter) Subscribe to newsletter?
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to newsletter?
         </label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), 
+                             "Select Membership Type", new { @class = "form-control" })
     </div>
 }
