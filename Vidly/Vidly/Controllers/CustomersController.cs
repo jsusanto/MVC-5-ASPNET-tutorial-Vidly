@@ -34,6 +34,20 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            /*
+             if we use public ActionResult Create(NewCustomerViewModel viewModel)
+             The objects returned would be Customer **have value** and MembershipType **null**
+
+             By using public ActionResult Create(Customer customer)
+             ASP.NET is clever enough to assign directly to customer
+             it's called model binding
+             */
+            return View();
+        }
+
         // GET: Customers
         public ActionResult Index()
         {
