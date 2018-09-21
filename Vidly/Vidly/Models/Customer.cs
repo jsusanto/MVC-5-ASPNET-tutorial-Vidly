@@ -26,6 +26,7 @@ namespace Vidly.Models
         //MembershipTypeId is implicitly as a required field because we don't declare as byte?
         public byte MembershipTypeId { get; set; }
 
+        [Min18YearsIfAMember]
         public DateTime? BirthDate { get; set; }
     }
 }
