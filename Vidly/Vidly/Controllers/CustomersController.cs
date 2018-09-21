@@ -35,7 +35,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
             /*
              if we use public ActionResult Create(NewCustomerViewModel viewModel)
@@ -46,7 +46,45 @@ namespace Vidly.Controllers
              it's called model binding
              */
 
-            _context.Customers.Add(customer); //this syntax will save data in the memory
+            if( customer.Id == 0)
+            {
+                _context.Customers.Add(customer); //this syntax will save data in the memory
+            }
+            else
+            {
+                var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == customer.Id);
+
+                //update the properties
+                /*
+                 * TryUpdateModel(customerInDb);
+                 * 
+                 * this approach used by the official from Microsoft .NET 
+                 * The properties will be updated based on the key pairs.
+                 * 
+                 * Drawback:
+                 * - it will open the security hole in your application why because in reality, you don't want all users
+                 * to update all properties.
+                 * it should be just particular user who has certain level access will be able to update the properties
+                 * Potential malicious user to update and add additional key - value pairs
+                 * 
+                 * Now the work around that Microsoft shows you is even worse
+                 * They advise to add the whitelist argument to flag which fields will be updated.
+                 * 
+                 * TryUpdateModel(customerInDb, "", new string[] { "Name", "Email" });
+                 * 
+                 * What will happen?
+                 * Your application will break the next day you update the field name
+                 * 
+                 * The bottom line is that you shouldn't blindly read or request all data in the object
+                 * To enhance a better approach (security), you need to create another Model that you allow to update the object 
+                 * Dto: Data transfer object
+                 * public ActionResult Save(UpdateCustomerDto customer)
+                 */
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
 
             _context.SaveChanges(); //it will execute / persist to database
 
