@@ -11,7 +11,7 @@ namespace Vidly.Models
         public int Id { get; set; }
 
         //Data annotation to override the default data type
-        [Required]
+        [Required(ErrorMessage = "Please enter customer's name")]
         [StringLength(255)]
         [Display (Name ="Customer Name")]
         public string Name { get; set; }
