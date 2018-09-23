@@ -35,6 +35,7 @@
         </label>
     </div>
     @Html.HiddenFor(m => m.Customer.Id)
+    @Html.AntiForgeryToken() <!-- To avoid CSRF -->
     <!-- The class is used to give stylesheet from bootstrap -->
     <button type="submit" class="btn btn-primary">Save</button>
 }
