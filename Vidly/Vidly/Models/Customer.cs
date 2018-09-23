@@ -11,6 +11,7 @@ namespace Vidly.Models
         public int Id { get; set; }
 
         //Data annotation to override the default data type
+        //Advantage of data annotation will recognise the server and client side validation when we put the reference
         [Required(ErrorMessage = "Please enter customer's name")]
         [StringLength(255)]
         [Display (Name ="Customer Name")]
