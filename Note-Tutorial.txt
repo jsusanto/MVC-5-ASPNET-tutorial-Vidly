@@ -192,3 +192,20 @@ Adding package 'bootbox.4.3.0' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial
 Added package 'bootbox.4.3.0' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
 Added package 'bootbox.4.3.0' to 'packages.config'
 Successfully installed 'bootbox 4.3.0' to Vidly
+
+====================================================================================================
+
+Install jquery package data table for sorting, paging and others
+
+PM> install-package jquery.datatables -version:1.10.11
+Attempting to gather dependency information for package 'jquery.datatables.1.10.11' with respect to project 'Vidly', targeting '.NETFramework,Version=v4.5.2'
+Attempting to resolve dependencies for package 'jquery.datatables.1.10.11' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'jquery.datatables.1.10.11'
+Resolved actions to install package 'jquery.datatables.1.10.11'
+  GET https://api.nuget.org/v3-flatcontainer/jquery.datatables/1.10.11/jquery.datatables.1.10.11.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/jquery.datatables/1.10.11/jquery.datatables.1.10.11.nupkg 871ms
+Installing jquery.datatables 1.10.11.
+Adding package 'jquery.datatables.1.10.11' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'jquery.datatables.1.10.11' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'jquery.datatables.1.10.11' to 'packages.config'
+Successfully installed 'jquery.datatables 1.10.11' to Vidly
