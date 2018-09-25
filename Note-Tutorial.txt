@@ -175,3 +175,20 @@ There are 3 steps of validations
    if (!ModelState.IsValid)
 
 3. Add validation messages to our form (placeholder)
+
+====================================================================================================
+
+install bootbox to replace the default dialog box
+
+PM> install-package bootbox -version:4.3.0
+Attempting to gather dependency information for package 'bootbox.4.3.0' with respect to project 'Vidly', targeting '.NETFramework,Version=v4.5.2'
+Attempting to resolve dependencies for package 'bootbox.4.3.0' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'bootbox.4.3.0'
+Resolved actions to install package 'bootbox.4.3.0'
+  GET https://api.nuget.org/v3-flatcontainer/bootbox/4.3.0/bootbox.4.3.0.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/bootbox/4.3.0/bootbox.4.3.0.nupkg 849ms
+Installing bootbox 4.3.0.
+Adding package 'bootbox.4.3.0' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'bootbox.4.3.0' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'bootbox.4.3.0' to 'packages.config'
+Successfully installed 'bootbox 4.3.0' to Vidly
