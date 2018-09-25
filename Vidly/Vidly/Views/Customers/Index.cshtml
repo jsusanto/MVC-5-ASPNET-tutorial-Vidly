@@ -42,13 +42,24 @@ else
 @section scripts
 {
     <script>
-        $(document).ready(function (){
+        $(document).ready(function () {
+            /*
+            To optimise jQuery
+
+            The following code will implement jQuery on each record which is expensive (memory)
             $("#customers .js-delete").on("click", function () {
+
+            we need to replace to the following implementation to implement on the table only
+            $("#customers").on("click", ".js-delete", function () {
+
+            */
+            //$("#customers .js-delete").on("click", function () {
+            $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
                 bootbox.confirm("Do you want to delete this customer?", function (result) {
                     if (result) {
                         $.ajax({
-                            url: "api/customers/" + button.attr("data-customer-id"),
+                            url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function () {
                                 //console.log("success");
@@ -61,7 +72,7 @@ else
                 // Default dialog box - no bootstrap, using native
                 if (confirm("Do you want to delete this customer?")) {
                     $.ajax({
-                        url: "api/customers/" + button.attr("data-customer-id"),
+                        url: "/api/customers/" + button.attr("data-customer-id"),
                         method: "DELETE",
                         success: function () {
                             //console.log("success");
