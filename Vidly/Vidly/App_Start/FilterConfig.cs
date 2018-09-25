@@ -8,6 +8,9 @@ namespace Vidly
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+
+            //Implement the authentication globally on your web application
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }
