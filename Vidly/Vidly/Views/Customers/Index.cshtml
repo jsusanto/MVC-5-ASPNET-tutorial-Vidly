@@ -26,7 +26,7 @@
     <script>
         $(document).ready(function () {
             //Initialize jQuery datatables
-            $("#customers").DataTable({
+            var table = $("#customers").DataTable({
                 /*
                 dataSrc: ""
                 because our return data as the following
@@ -109,7 +109,15 @@
                             method: "DELETE",
                             success: function () {
                                 //console.log("success");
-                                button.parents("tr").remove();
+
+                                //If we're using DataTable, we can't use button.parents("tr").remove(); to remove the row
+                                //it will remove from the database but the record will still be showing in the datatable because
+                                //we haven't removed the record from datatable
+                                //button.parents("tr").remove();
+
+                                // Delete the corresponding customer from internal list maintained by datatable, re-draw() the table
+                                table.row(button.parents("tr")).remove().draw();
+
                             }
                         });
                     }
