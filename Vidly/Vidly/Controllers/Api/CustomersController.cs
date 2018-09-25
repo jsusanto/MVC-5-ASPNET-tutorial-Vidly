@@ -7,6 +7,7 @@ using System.Web.Http;
 using Vidly.Models;
 using Vidly.Dtos;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace Vidly.Controllers.Api
 {
@@ -34,7 +35,10 @@ namespace Vidly.Controllers.Api
             instead of
             _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>)();
             */
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return _context.Customers
+                   .Include(c => c.MembershipType)
+                   .ToList()
+                   .Select(Mapper.Map<Customer, CustomerDto>);
         }
 
         // GET /api/customers/1
@@ -54,7 +58,7 @@ namespace Vidly.Controllers.Api
         public IHttpActionResult GetCustomer(int id)
         //public CustomerDto GetCustomer(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             //return the standard HTTP 404 response
             if (customer == null)

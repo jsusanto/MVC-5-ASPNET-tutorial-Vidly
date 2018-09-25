@@ -66,10 +66,13 @@
                         }
                     },
                     {
-                        data: "name"
+                        data: "membershipType.name",
                     },
                     {
-                        data: "name"
+                        data: "membershipType", //same approach as above
+                        render: function (data, type, customer) {
+                            return data.discountRate;
+                        }
                     },
                     {
                         data: "id",
