@@ -6,45 +6,85 @@
 
 <h2>Customers</h2>
 
-@if (!Model.Any())
-{
-    <p>We don't have any movies yet.</p>
-}
-else
-{
-    <table id="customers" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Customers</th>
-                <th>Membership Type</th>
-                <th>Discount Rate</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var customer in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
-                    <!-- Need to use eager loading in the controller or else it will throw error because 
-                        by default EntityFramework will load customer object and not related object -->
-                    <td>@customer.MembershipType.Name</td>
-                    <td>@customer.MembershipType.DiscountRate%</td>
-                    <td>@Html.ActionLink("Edit", "Edit", "Customers", new { id = customer.Id }, null)</td>
-                    <td><button class="btn-link js-delete" data-customer-id="@customer.Id">Delete</button></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customers</th>
+            <th>Membership Type</th>
+            <th>Discount Rate</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
 
 @section scripts
 {
     <script>
         $(document).ready(function () {
             //Initialize jQuery datatables
-            $("#customers").DataTable();
+            $("#customers").DataTable({
+                /*
+                dataSrc: ""
+                because our return data as the following
+                [
+                    {
+                        "id": 3,
+                        "name": "micasasdkey mouse2",
+                        "genreId": 1,
+                        "dateAdded": "2018-09-20T00:00:00",
+                        "releasedDate": "2018-09-20T00:00:00",
+                        "numberInStock": 1
+                    }
+                ]
+
+                if our API response data as the below, we need to set customers as our dataSrc
+
+                customers: [
+                    {
+                        "id": 3,
+                        "name": "micasasdkey mouse2",
+                        "genreId": 1,
+                        "dateAdded": "2018-09-20T00:00:00",
+                        "releasedDate": "2018-09-20T00:00:00",
+                        "numberInStock": 1
+                    }
+                ]
+                */
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name", //use this to get name from API response json data
+                        render: function (data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a class='btn-link' href='/Customers/Edit/" + data + "'> Edit </a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + "> Delete </button>";
+                        }
+                    }
+                ]
+            });
 
             /*
             To optimise jQuery

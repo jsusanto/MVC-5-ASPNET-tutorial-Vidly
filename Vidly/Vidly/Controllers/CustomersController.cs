@@ -121,9 +121,14 @@ namespace Vidly.Controllers
 
             //Eager loading is to load object and related object to avoid the error when calling the related object 
             //Include - we need to declare new namespace System.Data.Entity
+
+            /* We don't need to pass this one if we're using DataTable
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
+            */
+
+            return View(); //because we're using DataTables
         }
 
         public ActionResult Edit(int id)
