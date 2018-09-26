@@ -1,3 +1,10 @@
+Demo Users
+1. guest@jsusanto.com
+2. admin@jsusanto.com
+
+Password123!
+
+=====================================================
 If your Visual Studio 2015 is not having any visual-studio-2015-not-syntax-highlighting-razor-nor-intellisense
 
 Solution:
