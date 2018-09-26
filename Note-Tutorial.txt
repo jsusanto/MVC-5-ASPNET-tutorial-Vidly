@@ -216,3 +216,16 @@ Adding package 'jquery.datatables.1.10.11' to folder 'E:\ASPNetProject\MVC-5-ASP
 Added package 'jquery.datatables.1.10.11' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
 Added package 'jquery.datatables.1.10.11' to 'packages.config'
 Successfully installed 'jquery.datatables 1.10.11' to Vidly
+
+====================================================================================================
+***Modify the register user form by adding Driving Licence field form
+
+PM> add-migration AddDrivingLicenseToApplicationUser
+Scaffolding migration 'AddDrivingLicenseToApplicationUser'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddDrivingLicenseToApplicationUser' again.
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809260403013_AddDrivingLicenseToApplicationUser].
+Applying explicit migration: 201809260403013_AddDrivingLicenseToApplicationUser.
+Running Seed method.

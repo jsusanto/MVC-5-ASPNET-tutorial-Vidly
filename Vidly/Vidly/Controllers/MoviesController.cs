@@ -98,6 +98,8 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
+        //To Apply the restriction to /Movies/New
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ViewResult New()
         {
             var genres = _context.Genres.ToList();
@@ -141,13 +143,18 @@ namespace Vidly.Controllers
 
         public ViewResult index()
         {
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("List");
+            }
+            return View("ReadOnlyList");
             //Manual display from manual populate data
             //var movies = getMovies();
 
             //Display data from database
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            //var movies = _context.Movies.Include(m => m.Genre).ToList();
 
-            return View(movies);
+            //return View(movies);
         }
 
         public IEnumerable<Movie> getMovies()
