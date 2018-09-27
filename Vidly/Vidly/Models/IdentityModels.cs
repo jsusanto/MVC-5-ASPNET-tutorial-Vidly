@@ -12,6 +12,11 @@ namespace Vidly.Models
     {
         //Add new property on the register
         [Required]
+        [StringLength(50)]
+        public string Phone { get; set; }
+
+        //Add new property on the register
+        [Required]
         [StringLength(255)]
         public string DrivingLicence { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
