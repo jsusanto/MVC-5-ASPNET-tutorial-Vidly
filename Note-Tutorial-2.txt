@@ -1,0 +1,27 @@
+What's the different between eager loading and lazy loading?
+
+Eager loading loads the query in the beginning of the load, example:
+SELECT * 
+FROM ...
+INNER JOIN  ...
+INNER JOIN  ...
+
+public MembershipType MembershipType { get; set; }
+
+2. Lazy loading loads the page - instead of loading a bunch of objects together, 
+   objects are loaded only if our code touches
+   one or more of the navigation properties of an object
+
+For example, in Customer class if we change to virtual type
+
+public class Customer{
+    .
+    .
+    .
+    .
+    public virtual MembershipType MembershipType { get; set; }
+}
+
+on Web application, we should know which properties that we want to load.
+
+So that's what we call as N+1 issue on Lazy loading.

@@ -229,3 +229,77 @@ Specify the '-Verbose' flag to view the SQL statements being applied to the targ
 Applying explicit migrations: [201809260403013_AddDrivingLicenseToApplicationUser].
 Applying explicit migration: 201809260403013_AddDrivingLicenseToApplicationUser.
 Running Seed method.
+
+====================================================================================================
+
+Install glimpse.mvc5 and glimpse.ef6
+Glimpse basically puts your cookie to the machine and the cookies send back and forth with each request
+
+PM> install-package glimpse.mvc5
+
+Attempting to gather dependency information for package 'glimpse.mvc5.1.5.3' with respect to project 'Vidly', targeting '.NETFramework,Version=v4.5.2'
+Attempting to resolve dependencies for package 'glimpse.mvc5.1.5.3' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'glimpse.mvc5.1.5.3'
+Resolved actions to install package 'glimpse.mvc5.1.5.3'
+  GET https://api.nuget.org/v3-flatcontainer/glimpse/1.8.2/glimpse.1.8.2.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/glimpse/1.8.2/glimpse.1.8.2.nupkg 900ms
+Installing Glimpse 1.8.2.
+Adding package 'Glimpse.1.8.2' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.1.8.2' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.1.8.2' to 'packages.config'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.1.8.2\tools\init.ps1'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.1.8.2\tools\install.ps1'
+Successfully installed 'Glimpse 1.8.2' to Vidly
+  GET https://api.nuget.org/v3-flatcontainer/glimpse.aspnet/1.8.0/glimpse.aspnet.1.8.0.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/glimpse.aspnet/1.8.0/glimpse.aspnet.1.8.0.nupkg 850ms
+Installing Glimpse.AspNet 1.8.0.
+Adding package 'Glimpse.AspNet.1.8.0' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.AspNet.1.8.0' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.AspNet.1.8.0' to 'packages.config'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.AspNet.1.8.0\tools\install.ps1'
+Successfully installed 'Glimpse.AspNet 1.8.0' to Vidly
+  GET https://api.nuget.org/v3-flatcontainer/glimpse.mvc5/1.5.3/glimpse.mvc5.1.5.3.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/glimpse.mvc5/1.5.3/glimpse.mvc5.1.5.3.nupkg 852ms
+Installing Glimpse.Mvc5 1.5.3.
+Adding package 'Glimpse.Mvc5.1.5.3' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.Mvc5.1.5.3' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.Mvc5.1.5.3' to 'packages.config'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.Mvc5.1.5.3\tools\install.ps1'
+Successfully installed 'Glimpse.Mvc5 1.5.3' to Vidly
+
+PM> install-package glimpse.ef6
+
+Attempting to gather dependency information for package 'glimpse.ef6.1.6.5' with respect to project 'Vidly', targeting '.NETFramework,Version=v4.5.2'
+Attempting to resolve dependencies for package 'glimpse.ef6.1.6.5' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'glimpse.ef6.1.6.5'
+Resolved actions to install package 'glimpse.ef6.1.6.5'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.1.8.2\tools\uninstall.ps1'
+Removed package 'Glimpse.1.8.2' from 'packages.config'
+Successfully uninstalled 'Glimpse.1.8.2' from Vidly
+  GET https://api.nuget.org/v3-flatcontainer/glimpse/1.8.6/glimpse.1.8.6.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/glimpse/1.8.6/glimpse.1.8.6.nupkg 864ms
+Installing Glimpse 1.8.6.
+Adding package 'Glimpse.1.8.6' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.1.8.6' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.1.8.6' to 'packages.config'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.1.8.6\tools\init.ps1'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.1.8.6\tools\install.ps1'
+Successfully installed 'Glimpse 1.8.6' to Vidly
+  GET https://api.nuget.org/v3-flatcontainer/glimpse.ado/1.7.3/glimpse.ado.1.7.3.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/glimpse.ado/1.7.3/glimpse.ado.1.7.3.nupkg 242ms
+Installing Glimpse.Ado 1.7.3.
+Adding package 'Glimpse.Ado.1.7.3' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.Ado.1.7.3' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.Ado.1.7.3' to 'packages.config'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.Ado.1.7.3\tools\install.ps1'
+Successfully installed 'Glimpse.Ado 1.7.3' to Vidly
+  GET https://api.nuget.org/v3-flatcontainer/glimpse.ef6/1.6.5/glimpse.ef6.1.6.5.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/glimpse.ef6/1.6.5/glimpse.ef6.1.6.5.nupkg 845ms
+Installing Glimpse.EF6 1.6.5.
+Adding package 'Glimpse.EF6.1.6.5' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.EF6.1.6.5' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Glimpse.EF6.1.6.5' to 'packages.config'
+Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages\Glimpse.EF6.1.6.5\tools\install.ps1'
+Successfully installed 'Glimpse.EF6 1.6.5' to Vidly
+Removing package 'Glimpse.1.8.2' from folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Removed package 'Glimpse.1.8.2' from folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
