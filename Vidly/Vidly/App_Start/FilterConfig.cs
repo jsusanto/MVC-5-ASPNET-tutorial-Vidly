@@ -11,6 +11,9 @@ namespace Vidly
 
             //Implement the authentication globally on your web application
             filters.Add(new AuthorizeAttribute());
+
+            //Force to SSL for OATH authentication
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
