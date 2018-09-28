@@ -303,3 +303,13 @@ Executing script file 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packag
 Successfully installed 'Glimpse.EF6 1.6.5' to Vidly
 Removing package 'Glimpse.1.8.2' from folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
 Removed package 'Glimpse.1.8.2' from folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+
+========================================================================================================
+
+Many people understand wrongly about async, they believe that async will improve the performance.
+
+It's totally incorrect, async will improve scalability and not performace if you use a single database.
+Yes, it can serve many requests at the same time but the database is still working alone.
+
+If we want to improve the performance of the web application, we need to cluster the database.
+So the web application is able to receive more requests from client and database will be able to serve all requests.
