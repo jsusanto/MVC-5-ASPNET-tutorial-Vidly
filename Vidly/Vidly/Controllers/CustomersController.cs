@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Runtime.Caching;
 
 namespace Vidly.Controllers
 {
@@ -127,6 +128,21 @@ namespace Vidly.Controllers
 
             return View(customers);
             */
+
+
+            /* 
+             * Data Caching
+             * Example that we want to cache the list of Genre
+             * Use Data caching if ONLY that we want to optimise the performance, don't use the cache blindly 
+             * because it will increase your application memory and the unnecessary code complexity
+             */
+
+            if (MemoryCache.Default["Genres"] == null)
+            {
+                MemoryCache.Default["Genres"] = _context.Genres.ToList();
+            }
+
+            var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
 
             return View(); //because we're using DataTables
         }
