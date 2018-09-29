@@ -323,3 +323,89 @@ There are 4 strategies to optimise application tier:
 
 How to optimise Client Tier??
 1. js and css - compress
+
+========================================================================================================
+
+Add Rental table
+
+PM> add-migration AddRental
+Scaffolding migration 'AddRental'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddRental' again.
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809290034128_AddRental].
+Applying explicit migration: 201809290034128_AddRental.
+Running Seed method.
+
+========================================================================================================
+
+Add Number Available in stock on Movie table
+
+PM> add-migration AddNumberAvailableToMovieTable
+Scaffolding migration 'AddNumberAvailableToMovieTable'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration AddNumberAvailableToMovieTable' again.
+
+PM> update-database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying explicit migrations: [201809290551527_AddNumberAvailableToMovieTable].
+Applying explicit migration: 201809290551527_AddNumberAvailableToMovieTable.
+Running Seed method.
+
+Identify the potential issues using the Defensive approach
+ [HttpPost]
+        public IHttpActionResult CreateNewRentals(NewRentalDto newRental)
+        {
+            /* 
+             * using .Single because we assume that the customer will be sending the right customer id from drop down list
+             * if we're building a public API that can be used by various different application, we should us SingleOrDefault
+             * 
+             * var customer = _context.Customers.SingleOrDefault(c => c.Id == newRental.CustomerId);
+             * if (customer == null)
+             *   return BadRequest("Invalid Customer ID");
+             */
+
+            var customer = _context.Customers.SingleOrDefault(
+                c => c.Id == newRental.CustomerId);
+
+            // Customer Id is not valid
+            if (customer == null)
+                return BadRequest("Customer Id is not valid.");
+
+            // No movie in the details
+            if (newRental.MovieIds.Count == 0)
+                return BadRequest("No Movie Ids have been given.");
+
+            /* 
+             * To load multiple movies
+             * The following code is the translation of 
+             * SELECT * FROM Movies WHERE Id in (1,2,3); 
+             */
+            var movies = _context.Movies.Where
+                (m => newRental.MovieIds.Contains(m.Id)).ToList();
+
+            // One or more MovieIds are invalid.
+            if (movies.Count != newRental.MovieIds.Count)
+                return BadRequest("One or more MovieIds are invalid.");
+
+            foreach (var movie in movies){
+
+                // Movie is not available.
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available.");
+
+                movie.NumberAvailable--;
+
+                var rental = new Rental
+                {
+                    Customer = customer,
+                    Movie = movie,
+                    DateRented = DateTime.Now
+                };
+                _context.Rentals.Add(rental);
+            }
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
