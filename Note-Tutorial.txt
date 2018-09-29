@@ -314,10 +314,12 @@ Yes, it can serve many requests at the same time but the database is still worki
 If we want to improve the performance of the web application, we need to cluster the database.
 So the web application is able to receive more requests from client and database will be able to serve all requests.
 
-
 There are 4 strategies to optimise application tier:
 1. Output caching
 2. Data caching
 3. Release builds
 4. Disabling session - because it will remove the scalability. We need to create a stateless approach of web application.
    Basically it serves the customer's request only and doesn't maintain the data.
+
+How to optimise Client Tier??
+1. js and css - compress
