@@ -35,8 +35,16 @@ namespace Vidly.Controllers.Api
              *   return BadRequest("Invalid Customer ID");
              */
 
-            var customer = _context.Customers.Single(
+            var customer = _context.Customers.SingleOrDefault(
                 c => c.Id == newRental.CustomerId);
+
+            // Customer Id is not valid
+            if (customer == null)
+                return BadRequest("Customer Id is not valid.");
+
+            // No movie in the details
+            if (newRental.MovieIds.Count == 0)
+                return BadRequest("No Movie Ids have been given.");
 
             /* 
              * To load multiple movies
@@ -44,10 +52,21 @@ namespace Vidly.Controllers.Api
              * SELECT * FROM Movies WHERE Id in (1,2,3); 
              */
             var movies = _context.Movies.Where
-                (m => newRental.MovieIds.Contains(m.Id));
+                (m => newRental.MovieIds.Contains(m.Id)).ToList();
 
-            foreach(var movie in movies){
+            // One or more MovieIds are invalid.
+            if (movies.Count != newRental.MovieIds.Count)
+                return BadRequest("One or more MovieIds are invalid.");
+
+            foreach (var movie in movies)
+            {
+
+                // Movie is not available.
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available.");
+
                 movie.NumberAvailable--;
+
                 var rental = new Rental
                 {
                     Customer = customer,
