@@ -18,8 +18,11 @@
 
     <div class="form-group">
         <label>Movie</label>
-        <input type="text" value="" class="form-control" />
+        <input id="movie" type="text" value="" class="form-control" />
     </div>
+
+    <!-- ul#movies.list-group -->
+    <ul id="movies" class="list-group"></ul>
 
     <button class="btn btn-primary">Submit</button>
 </form>
@@ -29,8 +32,11 @@
     <script>
         $(document).ready(function () {
 
-            var vm = {};
+            var vm = {
+                movieIds: []
+            };
 
+            /* auto-complete customers */
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'), //customer has value called "name"
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -50,6 +56,33 @@
             }).on("typeahead:select", function (e, customer) {
                 vm.customerId = customer.id;
             });
+
+            /* auto-complete movies */
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'), //customer has value called "name"
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/movies?query=%QUERY', //based on what we type in the wildcard
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#movie').typeahead({
+                minLength: 3, //minimum 3 characters
+                highlight: true
+            }, {
+                name: 'movies',
+                display: 'name',
+                source: movies
+            }).on("typeahead:select", function (e, movie) {
+                $("#movies").append("<li>" + movie.name + "</li>");
+
+                //Clear the selection
+                $("#movie").typeahead("val", "");
+
+                vm.movieIds.push(movie.id);
+            });
+
         });
     </script>
 }
