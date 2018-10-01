@@ -409,3 +409,19 @@ Identify the potential issues using the Defensive approach
 
             return Ok();
         }
+
+========================================================================================================
+Install package for auto-complete search
+
+PM> install-package Twitter.Typeahead
+Attempting to gather dependency information for package 'Twitter.Typeahead.0.11.1' with respect to project 'Vidly', targeting '.NETFramework,Version=v4.5.2'
+Attempting to resolve dependencies for package 'Twitter.Typeahead.0.11.1' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'Twitter.Typeahead.0.11.1'
+Resolved actions to install package 'Twitter.Typeahead.0.11.1'
+  GET https://api.nuget.org/v3-flatcontainer/twitter.typeahead/0.11.1/twitter.typeahead.0.11.1.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/twitter.typeahead/0.11.1/twitter.typeahead.0.11.1.nupkg 230ms
+Installing Twitter.Typeahead 0.11.1.
+Adding package 'Twitter.Typeahead.0.11.1' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Twitter.Typeahead.0.11.1' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'Twitter.Typeahead.0.11.1' to 'packages.config'
+Successfully installed 'Twitter.Typeahead 0.11.1' to Vidly
