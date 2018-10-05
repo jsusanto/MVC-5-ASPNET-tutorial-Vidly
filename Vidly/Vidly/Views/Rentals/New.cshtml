@@ -6,7 +6,7 @@
 
 <h2>New Rental Form</h2>
 
-<form>
+<form id="newRental">
     <!-- ZenCoding
         install : Web Essential Plugin
         div.form-group>label+input[type='text'].form-control and press tab
@@ -40,7 +40,8 @@
     <script>
         $(document).ready(function () {
 
-            var vm = {
+            vm = {
+                customerId: "",
                 movieIds: []
             };
 
@@ -89,6 +90,23 @@
                 $("#movie").typeahead("val", "");
 
                 vm.movieIds.push(movie.id);
+            });
+
+            $("#newRental").submit(function (e) {
+                //To prevent submit form action normally
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/api/newRentals",
+                    method: "post",
+                    data: vm //our ViewModel
+                })
+                .done(function () {
+                    console.log("done");
+                })
+                .fail(function () {
+                    console.log("fail");
+                });
             });
 
         });
