@@ -26,8 +26,23 @@ namespace Vidly.Controllers.Api
         }
 
         // GET /api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
+            var customersQuery = _context.Customers
+                                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customerDtos = customersQuery
+                                 .ToList()
+                                 .Select(Mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerDtos);
+        }
+
+        //public IEnumerable<CustomerDto> GetCustomers()
+        //{
             /*
             Since we delegate a reference to a method, we need to remove the last ()
             It will be
@@ -35,11 +50,11 @@ namespace Vidly.Controllers.Api
             instead of
             _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>)();
             */
-            return _context.Customers
-                   .Include(c => c.MembershipType)
-                   .ToList()
-                   .Select(Mapper.Map<Customer, CustomerDto>);
-        }
+       //     return _context.Customers
+       //            .Include(c => c.MembershipType)
+        //           .ToList()
+        //           .Select(Mapper.Map<Customer, CustomerDto>);
+        //}
 
         // GET /api/customers/1
         /*
