@@ -16,7 +16,8 @@ namespace Vidly
                         "~/Scripts/respond.js",
                         "~/Scripts/datatables/jquery.datatables.js", //core datatables script
                         "~/Scripts/datatables/datatables.bootstrap.js", //integrate datatable and bootstrap
-                        "~/Scripts/typeahead.bundle.js" //script for auto-completion
+                        "~/Scripts/typeahead.bundle.js", //script for auto-completion
+                        "~/Scripts/toastr.js" //script for displaying toastr
                         )); 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -31,6 +32,7 @@ namespace Vidly
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/DataTables/css/datatables.bootstrap.css", // make datatable looks like bootstrap table
                       "~/Content/site.css",
+                      "~/Content/toastr.css",
                       "~/Content/typeahead.css"));
         }
     }

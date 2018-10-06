@@ -25,3 +25,20 @@ public class Customer{
 on Web application, we should know which properties that we want to load.
 
 So that's what we call as N+1 issue on Lazy loading.
+
+========================================================================================================
+
+Displaying Toast Notification
+
+PM> install-package toastr
+Attempting to gather dependency information for package 'toastr.2.1.1' with respect to project 'Vidly', targeting '.NETFramework,Version=v4.5.2'
+Attempting to resolve dependencies for package 'toastr.2.1.1' with DependencyBehavior 'Lowest'
+Resolving actions to install package 'toastr.2.1.1'
+Resolved actions to install package 'toastr.2.1.1'
+  GET https://api.nuget.org/v3-flatcontainer/toastr/2.1.1/toastr.2.1.1.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/toastr/2.1.1/toastr.2.1.1.nupkg 838ms
+Installing toastr 2.1.1.
+Adding package 'toastr.2.1.1' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'toastr.2.1.1' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
+Added package 'toastr.2.1.1' to 'packages.config'
+Successfully installed 'toastr 2.1.1' to Vidly
