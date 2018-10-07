@@ -14,15 +14,14 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <!-- to apply custom jQuery custom validation-->
-            <input id="customer" data-rule-validCustomer="true" type="text" value="" class="form-control" required />
+            <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label>Movie</label>
         <div class="tt-container">
-            <input id="movie" type="text" value="" class="form-control" />
+            <input id="movie" name="movie" data-rule-atLeastOneMovie="true" type="text" value="" class="form-control" />
         </div>
     </div>
 
@@ -38,7 +37,7 @@
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
 
@@ -94,17 +93,18 @@
                 vm.movieIds.push(movie.id);
             });
 
-            //Create custom validator
-            // To apply : <input id="customer" data-rule-validCustomer="true" type="text" value="" class="form-control" required />
             $.validator.addMethod("validCustomer", function () {
                 return vm.customerId && vm.customerId !== 0;
             }, "Please select a valid customer.");
 
-            $("#newRental").validate({
-                //if the form is valid, then it will call the submit handler
+            $.validator.addMethod("atLeastOneMovie", function () {
+                return vm.movieIds.length > 0;
+            }, "Please select at least one movie.");
+
+            var validator = $("#newRental").validate({
                 submitHandler: function () {
                     //To prevent submit form action normally
-                    e.preventDefault();
+                    //e.preventDefault();
 
                     $.ajax({
                         url: "/api/newRentals",
@@ -113,31 +113,22 @@
                     })
                     .done(function () {
                         toastr.success("Rental successfully recorded.");
+
+                        $("#customer").typeahead("val", "");
+                        $("#movie").typeahead("val", "");
+                        $("#movies").empty();
+
+                        vm = { movieIds: [] };
+
+                        validator.resetForm();
                     })
                     .fail(function () {
                         toastr.error("Something unexpected happened.");
                     });
+
+                    return false;
                 }
             });
-            /*
-            Submit method no validation
-            $("#newRental").submit(function (e) {
-                //To prevent submit form action normally
-                e.preventDefault();
-
-                $.ajax({
-                    url: "/api/newRentals",
-                    method: "post",
-                    data: vm //our ViewModel
-                })
-                .done(function () {
-                    toastr.success("Rental successfully recorded.");
-                })
-                .fail(function () {
-                    toastr.error("Something unexpected happened.");
-                });
-            });
-            */
 
         });
     </script>
