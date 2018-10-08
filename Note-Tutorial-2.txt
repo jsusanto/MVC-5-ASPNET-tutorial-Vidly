@@ -42,3 +42,15 @@ Adding package 'toastr.2.1.1' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-
 Added package 'toastr.2.1.1' to folder 'E:\ASPNetProject\MVC-5-ASPNET-tutorial-Vidly\Vidly\packages'
 Added package 'toastr.2.1.1' to 'packages.config'
 Successfully installed 'toastr 2.1.1' to Vidly
+
+========================================================================================================
+
+Export database script using NuGet Package Manager
+
+PM> update-database -script -SourceMigration:SeedUsers
+Applying explicit migrations: [201809260403013_AddDrivingLicenseToApplicationUser, 201809270455435_AddPhoneToApplicationUser, 201809290034128_AddRental, 201809290551527_AddNumberAvailableToMovieTable, 201810011053183_AddMissingFieldsMigration].
+Applying explicit migration: 201809260403013_AddDrivingLicenseToApplicationUser.
+Applying explicit migration: 201809270455435_AddPhoneToApplicationUser.
+Applying explicit migration: 201809290034128_AddRental.
+Applying explicit migration: 201809290551527_AddNumberAvailableToMovieTable.
+Applying explicit migration: 201810011053183_AddMissingFieldsMigration.
